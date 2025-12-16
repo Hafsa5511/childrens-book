@@ -111,11 +111,11 @@
       }
 
 
-       @font-face {
+      @font-face {
         font-family: 'TheScientist';
         src: url('TheScientist-L3EyW.ttf') format('truetype');
       }
-      
+
 
       /* Close Button */
       .close-btn {
@@ -200,59 +200,332 @@
       }
 
       .grid-image {
-        width: 100%; 
+        width: 100%;
         height: auto;
         border-radius: 20px;
       }
-      
+
       .scroll-progress {
-  position: fixed;
-  top: 0;
-  right: 60px;
-  height: 100vh;
-  width: 2px;
-  background: rgba(255, 215, 0, 0.1);
-  z-index: 50;
-  pointer-events: none;
-}
+        position: fixed;
+        top: 0;
+        right: 60px;
+        height: 100vh;
+        width: 2px;
+        background: rgba(255, 215, 0, 0.1);
+        z-index: 50;
+        pointer-events: none;
+      }
 
-.progress-line {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 0%;
-  background: linear-gradient(180deg, 
-    rgba(133, 120, 150, 0.3) 0%, 
-    rgba(133, 120, 150, 0.8) 50%, 
-    rgba(133, 120, 150, 1) 100%);
-  box-shadow: 0 0 10px rgba(133, 120, 150, 0.5);
-  transition: height 0.1s ease-out;
-}
+      .progress-line {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 0%;
+        background: linear-gradient(180deg,
+            rgba(133, 120, 150, 0.3) 0%,
+            rgba(133, 120, 150, 0.8) 50%,
+            rgba(133, 120, 150, 1) 100%);
+        box-shadow: 0 0 10px rgba(133, 120, 150, 0.5);
+        transition: height 0.1s ease-out;
+      }
 
-.progress-glow {
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 8px;
-  height: 8px;
-  background: rgba(133, 120, 150, 1);
-  border-radius: 50%;
-  box-shadow: 0 0 15px rgba(133, 120, 150, 0.8),
-              0 0 25px rgba(133, 120, 150, 0.5);
-  opacity: 0;
-  transition: bottom 0.1s ease-out, opacity 0.3s ease-out;
-}
+      .progress-glow {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 8px;
+        height: 8px;
+        background: rgba(133, 120, 150, 1);
+        border-radius: 50%;
+        box-shadow: 0 0 15px rgba(133, 120, 150, 0.8),
+          0 0 25px rgba(133, 120, 150, 0.5);
+        opacity: 0;
+        transition: bottom 0.1s ease-out, opacity 0.3s ease-out;
+      }
+
+
+
+      .scale-comparison-section {
+        margin: 80px 0;
+        padding: 40px;
+        background: rgba(255, 255, 255, 0.02);
+        border-radius: 30px;
+        border: 1px solid rgba(133, 120, 150, 0.2);
+        backdrop-filter: blur(10px);
+      }
+
+      .scale-description {
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.5);
+        margin-bottom: 30px;
+        font-style: italic;
+      }
+
+      .scale-toggles {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 40px;
+        flex-wrap: wrap;
+      }
+
+      .scale-btn {
+        padding: 12px 25px;
+        background: rgba(133, 120, 150, 0.1);
+        border: 1px solid rgba(133, 120, 150, 0.3);
+        color: rgba(255, 255, 255, 0.7);
+        border-radius: 15px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-size: 14px;
+        font-family: 'Ysabeau Infant', sans-serif;
+      }
+
+      .scale-btn:hover {
+        background: rgba(133, 120, 150, 0.2);
+        border-color: rgba(133, 120, 150, 0.5);
+        transform: translateY(-2px);
+      }
+
+      .scale-btn.active {
+        background: rgba(133, 120, 150, 0.3);
+        border-color: rgba(133, 120, 150, 0.6);
+        color: #fff;
+        box-shadow: 0 0 20px rgba(133, 120, 150, 0.3);
+      }
+
+      .scale-display-container {
+        position: relative;
+        min-height: 500px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 30px;
+      }
+
+      .scale-display {
+        position: absolute;
+        opacity: 0;
+        transform: scale(0.95);
+        transition: all 0.5s ease;
+        pointer-events: none;
+      }
+
+      .scale-display.active {
+        opacity: 1;
+        transform: scale(1);
+        pointer-events: auto;
+      }
+
+      .scale-context {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .print-scale .scale-image {
+        width: 384px;
+        height: 576px;
+        object-fit: cover;
+        border-radius: 10px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .scale-label {
+        font-size: 13px;
+        color: rgba(133, 120, 150, 0.8);
+        font-style: italic;
+        text-align: center;
+      }
+
+      /* Thumbnail mockup */
+      .mockup-device {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+      }
+
+      .mockup-screen {
+        width: 600px;
+        background: rgba(20, 20, 30, 0.8);
+        border-radius: 15px;
+        padding: 20px;
+        border: 1px solid rgba(133, 120, 150, 0.2);
+      }
+
+      .mockup-search-bar {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 10px 15px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+      }
+
+      .search-input {
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.5);
+      }
+
+      .mockup-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+      }
+
+      .mockup-book {
+        aspect-ratio: 2/3;
+        border-radius: 5px;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .mockup-book.other {
+        background: linear-gradient(135deg, rgba(100, 100, 120, 0.3), rgba(80, 80, 100, 0.3));
+      }
+
+      .mockup-book.featured {
+        box-shadow: 0 0 20px rgba(133, 120, 150, 0.5);
+        border: 2px solid rgba(133, 120, 150, 0.5);
+      }
+
+      .mockup-cover {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      /* Bookshelf mockup */
+      .bookshelf-mockup {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .shelf {
+        display: flex;
+        gap: 5px;
+        padding: 20px;
+        background: linear-gradient(180deg, rgba(60, 40, 30, 0.3), rgba(40, 25, 20, 0.3));
+        border-radius: 10px;
+        position: relative;
+      }
+
+      .shelf::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: rgba(80, 60, 50, 0.5);
+        border-radius: 0 0 10px 10px;
+      }
+
+      .spine-book {
+        width: 40px;
+        height: 280px;
+        border-radius: 3px;
+        position: relative;
+      }
+
+      .spine-book.other-spine {
+        background: linear-gradient(90deg, rgba(100, 80, 90, 0.4), rgba(80, 60, 70, 0.4));
+        border-left: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .spine-book.featured-spine {
+        width: 45px;
+        box-shadow: 0 0 20px rgba(133, 120, 150, 0.5);
+        overflow: hidden;
+      }
+
+      .spine-image {
+        width: 280px;
+        height: 45px;
+        object-fit: cover;
+        transform: rotate(-90deg) translateX(-117.5px) translateY(-117.5px);
+        transform-origin: top left;
+      }
+
+      /* Bookshelf mockup */
+      .bookshelf-mockup {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .shelf {
+        display: flex;
+        gap: 5px;
+        padding: 20px;
+        background: linear-gradient(180deg, rgba(60, 40, 30, 0.3), rgba(40, 25, 20, 0.3));
+        border-radius: 10px;
+        position: relative;
+      }
+
+      .shelf::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: rgba(80, 60, 50, 0.5);
+        border-radius: 0 0 10px 10px;
+      }
+
+      .spine-book {
+        width: 40px;
+        height: 280px;
+        border-radius: 3px;
+        position: relative;
+      }
+
+      .spine-book.other-spine {
+        background: linear-gradient(90deg, rgba(100, 80, 90, 0.4), rgba(80, 60, 70, 0.4));
+        border-left: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .spine-book.featured-spine {
+        width: 45px;
+        box-shadow: 0 0 20px rgba(133, 120, 150, 0.5);
+        overflow: hidden;
+      }
+
+      .spine-image {
+        width: 280px;
+        height: 45px;
+        object-fit: cover;
+        transform: rotate(-90deg) translateX(-117.5px) translateY(-117.5px);
+        transform-origin: top left;
+      }
+
+      .scale-insight {
+        padding: 20px;
+        background: rgba(133, 120, 150, 0.05);
+        border-left: 3px solid rgba(133, 120, 150, 0.5);
+        border-radius: 10px;
+        font-size: 14px;
+        line-height: 1.8;
+      }
+
+      .scale-insight strong {
+        color: rgba(133, 120, 150, 1);
+      }
     </style>
   </head>
 
   <body>
-    
+
     <div class="scroll-progress">
-  <div class="progress-line"></div>
-  <div class="progress-glow"></div>
-</div>
+      <div class="progress-line"></div>
+      <div class="progress-glow"></div>
+    </div>
     <canvas id="starfield"></canvas>
 
     <div class="custom-cursor"></div>
@@ -272,6 +545,9 @@
           </div>
         </div>
 
+
+
+
         <!-- Main Project Image -->
         <div class="project-image-section">
           <img src="book covers.png" alt="Project main image" class="project-image">
@@ -279,11 +555,61 @@
           <p class="image-caption">Children’s book cover illustrations featuring original characters and soft, textured digital painting</p>
         </div>
 
+        <div class="scale-comparison-section">
+          <h2 class="section-title">Scale & Context</h2>
+          <p class="scale-description">See how the cover appears at different sizes in real-world scenarios</p>
+
+          <div class="scale-toggles">
+            <button class="scale-btn active" data-scale="print">Print Size (6" × 9")</button>
+            <button class="scale-btn" data-scale="thumbnail">Online Thumbnail</button>
+          </div>
+
+          <div class="scale-display-container">
+            <div class="scale-display print-scale active" id="scaleDisplay">
+              <div class="scale-context">
+                <img src="trouble brewing.png" alt="Book cover" class="scale-image" id="scaleImage">
+                <div class="scale-label">Actual Print Size</div>
+              </div>
+            </div>
+
+            <div class="scale-display thumbnail-scale" id="thumbnailDisplay">
+              <div class="mockup-device">
+                <div class="mockup-screen">
+                  <div class="mockup-search-bar">
+                    <div class="search-input">children's books</div>
+                  </div>
+                  <div class="mockup-grid">
+                    <div class="mockup-book other"></div>
+                    <div class="mockup-book featured">
+                      <img src="trouble brewing.png" alt="Book cover" class="mockup-cover">
+                    </div>
+                    <div class="mockup-book other"></div>
+                    <div class="mockup-book other"></div>
+                    <div class="mockup-book other"></div>
+                    <div class="mockup-book other"></div>
+                  </div>
+                </div>
+                <div class="scale-label">As seen on Amazon/online stores</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="scale-insight">
+            <p><strong>Design Consideration:</strong> <span id="insightText">Cover designed to maintain visual hierarchy and readability at actual print dimensions, ensuring title and key artwork remain impactful when held in hand.</span></p>
+          </div>
+        </div>
+
+
         <!-- Section with title -->
         <h2 class="section-title">Process</h2>
         <div class="project-description">
 
         </div>
+
+
+
+
+
 
         <!-- Two column grid for process images -->
         <div class="two-column-grid">
@@ -395,7 +721,7 @@
       function createShootingStar() {
         const side = Math.random();
         let startX, startY, endX, endY;
-        
+
         if (side < 0.5) {
           startX = Math.random() * canvas.width * 0.3;
           startY = Math.random() * canvas.height * 0.3;
@@ -407,7 +733,7 @@
           endX = startX - 200 - Math.random() * 300;
           endY = startY + 200 + Math.random() * 300;
         }
-        
+
         shootingStars.push({
           x: startX,
           y: startY,
@@ -422,34 +748,34 @@
       function drawShootingStars() {
         shootingStars.forEach((star, index) => {
           star.progress += star.speed;
-          
+
           if (star.progress > 1) {
             star.opacity -= 0.05;
           }
-          
+
           if (star.opacity <= 0) {
             shootingStars.splice(index, 1);
             return;
           }
-          
+
           const currentX = star.x + (star.endX - star.x) * star.progress;
           const currentY = star.y + (star.endY - star.y) * star.progress;
-          
+
           const tailX = currentX - (star.endX - star.x) * 0.05;
           const tailY = currentY - (star.endY - star.y) * 0.05;
-          
+
           const gradient = ctx.createLinearGradient(tailX, tailY, currentX, currentY);
           gradient.addColorStop(0, `rgba(255, 255, 255, 0)`);
           gradient.addColorStop(0.5, `rgba(255, 255, 255, ${0.3 * star.opacity})`);
           gradient.addColorStop(1, `rgba(255, 255, 255, ${0.8 * star.opacity})`);
-          
+
           ctx.beginPath();
           ctx.moveTo(tailX, tailY);
           ctx.lineTo(currentX, currentY);
           ctx.strokeStyle = gradient;
           ctx.lineWidth = 2;
           ctx.stroke();
-          
+
           ctx.beginPath();
           ctx.arc(currentX, currentY, 2, 0, Math.PI * 2);
           ctx.fillStyle = `rgba(255, 255, 255, ${star.opacity})`;
@@ -507,34 +833,61 @@
       }, 8000);
     </script>
 
-   <script>
-  // Scroll progress indicator
-  const progressLine = document.querySelector('.progress-line');
-  const progressGlow = document.querySelector('.progress-glow');
+    <script>
+      // Scroll progress indicator
+      const progressLine = document.querySelector('.progress-line');
+      const progressGlow = document.querySelector('.progress-glow');
 
-  function updateProgress() {
-    const windowHeight = window.innerHeight;
-    const documentHeight = document.documentElement.scrollHeight;
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    
-    const scrollPercent = (scrollTop / (documentHeight - windowHeight)) * 100;
-    
-    progressLine.style.height = scrollPercent + '%';
-    
-    if (scrollPercent > 2) {
-      progressGlow.style.opacity = '1';
-      progressGlow.style.bottom = (100 - scrollPercent) + '%';
-    } else {
-      progressGlow.style.opacity = '0';
-    }
-  }
+      function updateProgress() {
+        const windowHeight = window.innerHeight;
+        const documentHeight = document.documentElement.scrollHeight;
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
-  window.addEventListener('scroll', updateProgress);
-  window.addEventListener('resize', updateProgress);
-  
-  updateProgress();
-</script> 
-    
-    
+        const scrollPercent = (scrollTop / (documentHeight - windowHeight)) * 100;
+
+        progressLine.style.height = scrollPercent + '%';
+
+        if (scrollPercent > 2) {
+          progressGlow.style.opacity = '1';
+          progressGlow.style.bottom = (100 - scrollPercent) + '%';
+        } else {
+          progressGlow.style.opacity = '0';
+        }
+      }
+
+      window.addEventListener('scroll', updateProgress);
+      window.addEventListener('resize', updateProgress);
+
+      updateProgress();
+    </script>
+    <script>
+      // Scale Comparison Tool
+      const scaleButtons = document.querySelectorAll('.scale-btn');
+      const scaleDisplays = document.querySelectorAll('.scale-display');
+      const insightText = document.getElementById('insightText');
+
+      const insights = {
+        print: "Cover designed to maintain visual hierarchy and readability at actual print dimensions, ensuring title and key artwork remain impactful when held in hand.",
+        thumbnail: "Bold colors and clear typography ensure the cover stands out among competitors in crowded online marketplaces. The design remains recognizable even at small sizes."
+      };
+
+      scaleButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          const scale = button.dataset.scale;
+
+          // Update active button
+          scaleButtons.forEach(btn => btn.classList.remove('active'));
+          button.classList.add('active');
+
+          // Update active display
+          scaleDisplays.forEach(display => display.classList.remove('active'));
+          document.querySelector(`.${scale}-scale`).classList.add('active');
+
+          // Update insight text
+          insightText.textContent = insights[scale];
+        });
+      });
+    </script>
+
   </body>
 </html>
